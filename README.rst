@@ -14,6 +14,11 @@ DRYlib for C++
 
 http://drylib.org
 
+Prerequisites
+=============
+
+* a C++14 compiler
+
 Features
 ========
 
