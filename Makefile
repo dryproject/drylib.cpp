@@ -1,5 +1,5 @@
-CXX = c++ -std=c++14
-PANDOC = pandoc
+CXX ?= c++ -std=c++14
+PANDOC ?= pandoc
 
 PACKAGE :=
 VERSION := $(shell cat VERSION)

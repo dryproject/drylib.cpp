@@ -1,0 +1,27 @@
+# https://docs.travis-ci.com/user/languages/cpp/
+language: cpp
+sudo: false
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env:
+        - ENV="g++-7 -std=c++14"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-5.0
+          packages:
+            - clang-5.0
+      env:
+        - ENV="clang++-5.0 -std=c++14"
+before_install:
+  - export CXX="$ENV"
+script:
+  - make && make check
