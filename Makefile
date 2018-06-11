@@ -2,7 +2,7 @@ CXX     ?= c++
 PANDOC  ?= pandoc
 
 CPPFLAGS = -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
-CXXFLAGS = -std=c++14
+CXXFLAGS = -std=c++17
 
 PACKAGE :=
 VERSION := $(shell cat VERSION)
