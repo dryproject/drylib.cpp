@@ -13,7 +13,8 @@ dry:base/int128	typedef	dry::int128
 dry:base/integer	struct	dry::integer
 dry:base/nat	typedef	dry::nat
 dry:base/natural	struct	dry::natural
-dry:base/number	union	dry::number
+dry:base/number	variant	dry::number
+dry:base/optional	typedef	dry::optional
 dry:base/rational	struct	dry::rational
 dry:base/real	struct	dry::real
 dry:base/string	struct	dry::string
@@ -36,9 +37,11 @@ dry:text/ascii/reverse	function	dry::text::ascii::reverse
 dry:text/ascii/size	function	dry::text::ascii::size
 dry:text/ascii/starts-with?	function	dry::text::ascii::starts_with
 dry:text/ascii/string	typedef	dry::text::ascii::string
+dry:text/ascii/string	function	dry::text::ascii::make_string
 dry:text/ascii/trim	function	dry::text::ascii::trim
 dry:text/ascii/trim-left	function	dry::text::ascii::trim_left
 dry:text/ascii/trim-right	function	dry::text::ascii::trim_right
+dry:text/ascii/valid?	function	dry::text::ascii::is_valid
 dry:text/utf8/blank?	function	dry::text::utf8::is_blank
 dry:text/utf8/compare	function	dry::text::utf8::compare
 dry:text/utf8/concat	function	dry::text::utf8::concat
@@ -52,6 +55,8 @@ dry:text/utf8/reverse	function	dry::text::utf8::reverse
 dry:text/utf8/size	function	dry::text::utf8::size
 dry:text/utf8/starts-with?	function	dry::text::utf8::starts_with
 dry:text/utf8/string	typedef	dry::text::utf8::string
+dry:text/utf8/string	function	dry::text::utf8::make_string
 dry:text/utf8/trim	function	dry::text::utf8::trim
 dry:text/utf8/trim-left	function	dry::text::utf8::trim_left
 dry:text/utf8/trim-right	function	dry::text::utf8::trim_right
+dry:text/utf8/valid?	function	dry::text::utf8::is_valid

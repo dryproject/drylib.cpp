@@ -12,14 +12,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <cstdint> /* for __WORDSIZE, std::*int_t */
+#include <algorithm> /* for std::max(), std::min(), ... */
+#include <cstdint>   /* for __WORDSIZE, std::*int_t */
+#include <cstring>   /* for std::strlen(), std::strncmp() */
+#include <memory>    /* for std::unique_ptr */
+#include <optional>  /* for std::optional */
+#include <variant>   /* for std::variant */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
   using bool_ = bool;
 
-  using char_ = std::uint32_t;
+  using char_ = ::std::uint32_t;
 
   struct complex;
 
@@ -31,13 +36,13 @@ namespace dry {
 
   using int_ = long;
 
-  using int8 = std::int8_t;
+  using int8 = ::std::int8_t;
 
-  using int16 = std::int16_t;
+  using int16 = ::std::int16_t;
 
-  using int32 = std::int32_t;
+  using int32 = ::std::int32_t;
 
-  using int64 = std::int64_t;
+  using int64 = ::std::int64_t;
 
   using int128 = __int128; // TODO: protect with macro
 
@@ -47,7 +52,10 @@ namespace dry {
 
   struct natural;
 
-  // TODO: number
+  // TODO: using number = ::std::variant<...>;
+
+  template<typename T>
+  using optional = ::std::optional<T>;
 
   struct rational;
 
@@ -58,20 +66,20 @@ namespace dry {
   // TODO: symbol
 
 #if __WORDSIZE == 32
-  using word = std::uint32_t;
+  using word = ::std::uint32_t;
 #elif __WORDSIZE == 64
-  using word = std::uint64_t;
+  using word = ::std::uint64_t;
 #else
 #error "unsupported size for __WORDSIZE"
 #endif
 
-  using word8 = std::uint8_t;
+  using word8 = ::std::uint8_t;
 
-  using word16 = std::uint16_t;
+  using word16 = ::std::uint16_t;
 
-  using word32 = std::uint32_t;
+  using word32 = ::std::uint32_t;
 
-  using word64 = std::uint64_t;
+  using word64 = ::std::uint64_t;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -208,10 +216,27 @@ namespace dry { namespace text { namespace ascii {
   using string = dry::string;
 
   /**
+   * Implements dry:text/ascii/string.
+   */
+  inline const string make_string(const char* data,
+                                  const nat size) {
+    return {size: size, data: data};
+  }
+
+  /**
+   * Implements dry:text/ascii/string.
+   */
+  inline const string make_string(const char* data) {
+    return make_string(data, ::std::strlen(data));
+  }
+
+  /**
    * Implements dry:text/ascii/blank?.
    */
   inline bool is_blank(const string& s) {
-    return false; // TODO
+    return ::std::all_of(s.data, s.data + s.size, [](unsigned char c) {
+      return c == 0x20 || c == 0x09; // space or horizontal tab
+    });
   }
 
   /**
@@ -219,6 +244,15 @@ namespace dry { namespace text { namespace ascii {
    */
   inline bool is_empty(const string& s) {
     return s.size == 0;
+  }
+
+  /**
+  * Implements dry:text/ascii/valid?.
+  */
+  inline bool is_valid(const string& s) {
+    return ::std::all_of(s.data, s.data + s.size, [](unsigned char c) {
+      return c <= 0x7F;
+    });
   }
 
   /**
@@ -232,15 +266,16 @@ namespace dry { namespace text { namespace ascii {
    * Implements dry:text/ascii/length.
    */
   inline nat length(const string& s) {
-    return 0; // TODO
+    return s.size;
   }
 
   /**
    * Implements dry:text/ascii/nth.
    */
-  inline char_ nth(const string& s,
-                   const nat n) {
-    return 0; // TODO
+  inline optional<char_> nth(const string& s,
+                             const nat n) {
+    if (n >= s.size) return {};
+    return s.data[n];
   }
 
   /**
@@ -248,7 +283,7 @@ namespace dry { namespace text { namespace ascii {
    */
   inline bool equals(const string& s1,
                      const string& s2) {
-    return {}; // TODO
+    return s1.size == s2.size && ::std::strncmp(s1.data, s2.data, s1.size);
   }
 
   /**
@@ -256,7 +291,10 @@ namespace dry { namespace text { namespace ascii {
    */
   inline bool contains(const string& s,
                        const char_ c) {
-    return false; // TODO
+    if (c > 0x7F) return false;
+    return ::std::any_of(s.data, s.data + s.size, [c](unsigned char c_) {
+      return c_ == c;
+    });
   }
 
   /**
@@ -264,7 +302,8 @@ namespace dry { namespace text { namespace ascii {
    */
   inline bool ends_with(const string& s1,
                         const string& s2) {
-    return false; // TODO
+    if (s2.size > s1.size) return false;
+    return ::std::strncmp(s1.data + s1.size - s2.size, s2.data, s2.size) == 0;
   }
 
   /**
@@ -272,7 +311,8 @@ namespace dry { namespace text { namespace ascii {
    */
   inline bool starts_with(const string& s1,
                           const string& s2) {
-    return false; // TODO
+    if (s2.size > s1.size) return false;
+    return ::std::strncmp(s1.data, s2.data, ::std::min(s1.size, s2.size)) == 0;
   }
 
   /**
@@ -280,7 +320,7 @@ namespace dry { namespace text { namespace ascii {
    */
   inline int compare(const string& s1,
                      const string& s2) {
-    return -1; // TODO
+    return ::std::strncmp(s1.data, s2.data, ::std::min(s1.size, s2.size)); // FIXME
   }
 
   /**
@@ -339,6 +379,7 @@ namespace dry { namespace text { namespace utf8 {
 
   using ascii::is_blank;
   using ascii::is_empty;
+  using ascii::is_valid;
   using ascii::size;
   using ascii::length;
   using ascii::nth;
