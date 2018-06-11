@@ -12,27 +12,45 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include <algorithm> /* for std::max(), std::min(), ... */
-#include <cstdint>   /* for __WORDSIZE, std::*int_t */
-#include <cstring>   /* for std::strlen(), std::strncmp() */
-#include <memory>    /* for std::unique_ptr */
-#include <optional>  /* for std::optional */
-#include <variant>   /* for std::variant */
+#include <algorithm>    /* for std::max(), std::min(), ... */
+#include <any>          /* for std::any */
+#include <cstdint>      /* for __WORDSIZE, std::*int_t */
+#include <cstring>      /* for std::strlen(), std::strncmp() */
+#include <exception>    /* for std::exception */
+#include <forward_list> /* for std::forward_list */
+#include <functional>   /* for std::function */
+#include <map>          /* for std::map */
+#include <memory>       /* for std::unique_ptr */
+#include <optional>     /* for std::optional */
+#include <set>          /* for std::set */
+#include <tuple>        /* for std::tuple */
+#include <utility>      /* for std::pair */
+#include <variant>      /* for std::variant */
+#include <vector>       /* for std::vector */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
+  using any = ::std::any;
+
+  using bit = bool;
+
   using bool_ = bool;
 
-  using char_ = ::std::uint32_t;
+  using char_ = char32_t;
 
   struct complex;
+
+  using error = ::std::exception;
 
   using float_ = double;
 
   using float32 = float;
 
   using float64 = double;
+
+  template<typename R, typename... Args>
+  using function = ::std::function<R (Args...)>;
 
   using int_ = long;
 
@@ -48,22 +66,61 @@ namespace dry {
 
   struct integer;
 
+  template<typename T>
+  using interval = ::std::pair<T, T>;
+
+  template<typename T, typename Allocator = ::std::allocator<T>>
+  using list = ::std::forward_list<T, Allocator>;
+
+  template<typename Key, typename Val, typename Compare = ::std::less<Key>, typename Allocator = ::std::allocator<::std::pair<const Key, Val>>>
+  using map = ::std::map<Key, Val, Compare, Allocator>;
+
+  // see further below for dry::matrix
+
   using nat = unsigned long;
 
   struct natural;
 
-  // TODO: using number = ::std::variant<...>;
+  using none_t = ::std::nullopt_t;
+
+  inline constexpr none_t none = ::std::nullopt;
+
+  // see further below for dry::number
 
   template<typename T>
   using optional = ::std::optional<T>;
+
+  template<typename... Args>
+  using predicate = ::std::function<bool (Args...)>;
+
+  // TODO: quantity
 
   struct rational;
 
   struct real;
 
+  template<typename T>
+  using result = std::pair<error, T>;
+
+  // see further below for dry::scalar
+
+  // TODO: seq
+
+  template<typename Key, typename Compare = ::std::less<Key>, typename Allocator = ::std::allocator<Key>>
+  using set = ::std::set<Key, Compare, Allocator>;
+
   struct string;
 
-  // TODO: symbol
+  struct symbol;
+
+  // see further below for dry::tensor
+
+  template<typename... Types>
+  using tuple = ::std::tuple<Types...>;
+
+  // TODO: unit
+
+  // see further below for dry::vector
 
 #if __WORDSIZE == 32
   using word = ::std::uint32_t;
@@ -80,6 +137,43 @@ namespace dry {
   using word32 = ::std::uint32_t;
 
   using word64 = ::std::uint64_t;
+}
+
+namespace dry {
+  using number = ::std::variant<
+    complex,
+    float,
+    int,
+    integer,
+    nat,
+    natural,
+    rational,
+    real
+  >;
+
+  using scalar = ::std::variant<
+    bit,
+    bool_,
+    char_,
+    number,
+    word
+  >;
+
+  template<
+    typename T,
+    typename Allocator = ::std::allocator<T>
+  >
+  using vector = ::std::vector<T, Allocator>;
+
+  template<typename T>
+  struct matrix;
+
+  template<typename T>
+  using tensor = ::std::variant<
+    scalar,
+    vector<T>,
+    matrix<T>
+  >;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -106,8 +200,17 @@ struct dry::complex {
   dry::real imaginary;
 };
 
+template<typename T>
+struct dry::matrix {
+  // TODO
+};
+
 struct dry::string {
   dry::nat size;
+  const char* data;
+};
+
+struct dry::symbol {
   const char* data;
 };
 
@@ -274,7 +377,7 @@ namespace dry { namespace text { namespace ascii {
    */
   inline optional<char_> nth(const string& s,
                              const nat n) {
-    if (n >= s.size) return {};
+    if (n >= s.size) return none;
     return s.data[n];
   }
 
@@ -377,6 +480,7 @@ namespace dry { namespace text { namespace utf8 {
    */
   using string = dry::string;
 
+  using ascii::make_string;
   using ascii::is_blank;
   using ascii::is_empty;
   using ascii::is_valid;
