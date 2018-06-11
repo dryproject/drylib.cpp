@@ -1,5 +1,7 @@
 /* This is free and unencumbered software released into the public domain. */
 
+#pragma once
+
 #ifndef __cplusplus
 #error "DRYlib for C++ requires a C++ compiler"
 #endif
@@ -41,11 +43,19 @@ namespace dry {
 
   struct integer;
 
-  using natural = integer;
+  using nat = unsigned long;
+
+  struct natural;
+
+  // TODO: number
 
   struct rational;
 
   struct real;
+
+  struct string;
+
+  // TODO: symbol
 
 #if __WORDSIZE == 32
   using word = std::uint32_t;
@@ -70,24 +80,27 @@ struct dry::integer {
   dry::int128 value; // TODO
 };
 
-////////////////////////////////////////////////////////////////////////////////
+struct dry::natural {
+  dry::int128 value; // TODO
+};
 
 struct dry::rational {
   dry::integer numerator;
   dry::integer denominator; /* denominator != 0 */
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
 struct dry::real {
   dry::float64 value; // TODO
 };
 
-////////////////////////////////////////////////////////////////////////////////
-
 struct dry::complex {
   dry::real real;
   dry::real imaginary;
+};
+
+struct dry::string {
+  dry::nat size;
+  const char* data;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -188,16 +201,157 @@ namespace dry { namespace util { }} // namespace dry::util
 ////////////////////////////////////////////////////////////////////////////////
 /* dry:text/ascii */
 
-namespace dry { namespace text { namespace ascii { }}} // namespace dry::text::ascii
+namespace dry { namespace text { namespace ascii {
+  /**
+   * Implements dry:text/ascii/string.
+   */
+  using string = dry::string;
+
+  /**
+   * Implements dry:text/ascii/blank?.
+   */
+  inline bool is_blank(const string& s) {
+    return false; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/empty?.
+   */
+  inline bool is_empty(const string& s) {
+    return s.size == 0;
+  }
+
+  /**
+   * Implements dry:text/ascii/size.
+   */
+  inline nat size(const string& s) {
+    return s.size;
+  }
+
+  /**
+   * Implements dry:text/ascii/length.
+   */
+  inline nat length(const string& s) {
+    return 0; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/nth.
+   */
+  inline char_ nth(const string& s,
+                   const nat n) {
+    return 0; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/equals?.
+   */
+  inline bool equals(const string& s1,
+                     const string& s2) {
+    return {}; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/contains?.
+   */
+  inline bool contains(const string& s,
+                       const char_ c) {
+    return false; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/ends-with?.
+   */
+  inline bool ends_with(const string& s1,
+                        const string& s2) {
+    return false; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/starts-with?.
+   */
+  inline bool starts_with(const string& s1,
+                          const string& s2) {
+    return false; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/compare.
+   */
+  inline int compare(const string& s1,
+                     const string& s2) {
+    return -1; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/concat.
+   */
+  inline const string concat(const string& s1,
+                             const string& s2) {
+    return {}; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/reverse.
+   */
+  inline const string reverse(const string& s) {
+    return {}; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/trim.
+   */
+  inline const string trim(const string& s) {
+    return s; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/trim-left.
+   */
+  inline const string trim_left(const string& s) {
+    return s; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/trim-right.
+   */
+  inline const string trim_right(const string& s) {
+    return s; // TODO
+  }
+
+}}} // namespace dry::text::ascii
 
 ////////////////////////////////////////////////////////////////////////////////
 /* dry:text/printf */
 
-namespace dry { namespace text { namespace printf { }}} // namespace dry::text::printf
+namespace dry { namespace text { namespace printf {
+
+}}} // namespace dry::text::printf
 
 ////////////////////////////////////////////////////////////////////////////////
 /* dry:text/utf8 */
 
-namespace dry { namespace text { namespace utf8 { }}} // namespace dry::text::utf8
+namespace dry { namespace text { namespace utf8 {
+  /**
+   * Implements dry:text/utf8/string.
+   */
+  using string = dry::string;
+
+  using ascii::is_blank;
+  using ascii::is_empty;
+  using ascii::size;
+  using ascii::length;
+  using ascii::nth;
+  using ascii::equals;
+  using ascii::contains;
+  using ascii::ends_with;
+  using ascii::starts_with;
+  using ascii::compare;
+  using ascii::concat;
+  using ascii::reverse;
+  using ascii::trim;
+  using ascii::trim_left;
+  using ascii::trim_right;
+}}} // namespace dry::text::utf8
 
 ////////////////////////////////////////////////////////////////////////////////
