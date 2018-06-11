@@ -1,20 +1,23 @@
-dry/base	?	?
-dry/bits	?	?
-dry/code	?	?
-dry/crypto	?	?
-dry/data	?	?
-dry/ffi	?	?
-dry/geo	?	?
-dry/io	?	?
-dry/lang	?	?
-dry/logic	?	?
-dry/math	?	?
-dry/media	?	?
-dry/meta	?	?
-dry/net	?	?
-dry/qty	?	?
-dry/std	?	?
-dry/sys	?	?
-dry/text	?	?
-dry/time	?	?
-dry/util	?	?
+dry:base	namespace	dry	WIP
+dry:bits	namespace	dry::bits	TODO
+dry:code	namespace	dry::code	N/A
+dry:crypto	namespace	dry::crypto	TODO
+dry:data	namespace	dry::data	TODO
+dry:ffi	namespace	dry::ffi	N/A
+dry:geo	namespace	dry::geo	TODO
+dry:io	namespace	dry::io	TODO
+dry:lang	namespace	dry::lang	TODO
+dry:logic	namespace	dry::logic	TODO
+dry:math	namespace	dry::math	TODO
+dry:media	namespace	dry::media	TODO
+dry:meta	namespace	dry::meta	TODO
+dry:net	namespace	dry::net	TODO
+dry:qty	namespace	dry::qty	TODO
+dry:std	namespace	dry::std	TODO
+dry:sys	namespace	dry::sys	TODO
+dry:text	namespace	dry::text	TODO
+dry:text/ascii	namespace	dry::text::ascii	TODO
+dry:text/printf	namespace	dry::text::printf	TODO
+dry:text/utf8	namespace	dry::text::utf8	TODO
+dry:time	namespace	dry::time	TODO
+dry:util	namespace	dry::util	TODO

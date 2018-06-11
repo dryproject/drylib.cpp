@@ -1,5 +1,7 @@
-CXX ?= c++ -std=c++14
+CXX    ?= c++
 PANDOC ?= pandoc
+
+CXXFLAGS ?= -std=c++14
 
 PACKAGE :=
 VERSION := $(shell cat VERSION)
