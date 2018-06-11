@@ -62,7 +62,11 @@ namespace dry {
 
   using int64 = ::std::int64_t;
 
-  using int128 = __int128; // TODO: protect with macro
+#ifdef __SIZEOF_INT128__
+  using int128 = __int128;
+#else
+#error "DRYlib for C++ requires compiler support for the __int128 type"
+#endif
 
   struct integer;
 
@@ -127,7 +131,7 @@ namespace dry {
 #elif __WORDSIZE == 64
   using word = ::std::uint64_t;
 #else
-#error "unsupported size for __WORDSIZE"
+#error "DRYlib for C++ detected an unsupported size for __WORDSIZE"
 #endif
 
   using word8 = ::std::uint8_t;
