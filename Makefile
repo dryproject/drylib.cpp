@@ -20,7 +20,7 @@ TARGETS := test
 %: %.o
 	$(CXX) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
-test: test.o drylib.o
+test: test.o
 
 all: build
 
