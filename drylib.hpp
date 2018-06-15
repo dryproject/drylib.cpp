@@ -353,7 +353,7 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/empty?.
    */
-  inline bool is_empty(const string& s) {
+  inline bool empty(const string& s) {
     return s.size == 0;
   }
 
@@ -511,7 +511,7 @@ namespace dry { namespace text { namespace utf8 {
 
   using ascii::make_string;
   using ascii::is_blank;
-  using ascii::is_empty;
+  using ascii::empty;
   using ascii::is_valid;
   using ascii::size;
   using ascii::length;
