@@ -13,5 +13,7 @@ int main(int argc, char* argv[]) {
   const auto s = ascii::make_string("hello");
   ascii::length(s);
 
+  printf::sprintf("Hello, %s!", "world");
+
   return EXIT_SUCCESS; // TODO
 }
