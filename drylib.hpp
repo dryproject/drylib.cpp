@@ -344,8 +344,8 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/blank?.
    */
-  inline bool is_blank(const string& s) {
-    return ::std::all_of(s.data, s.data + s.size, [](unsigned char c) {
+  inline bool is_blank(const string& string) {
+    return ::std::all_of(string.data, string.data + string.size, [](unsigned char c) {
       return c == 0x20 || c == 0x09; // space or horizontal tab
     });
   }
@@ -353,15 +353,15 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/empty?.
    */
-  inline bool empty(const string& s) {
-    return s.size == 0;
+  inline bool empty(const string& string) {
+    return string.size == 0;
   }
 
   /**
   * Implements dry:text/ascii/valid?.
   */
-  inline bool is_valid(const string& s) {
-    return ::std::all_of(s.data, s.data + s.size, [](unsigned char c) {
+  inline bool is_valid(const string& string) {
+    return ::std::all_of(string.data, string.data + string.size, [](unsigned char c) {
       return c <= 0x7F;
     });
   }
@@ -369,105 +369,105 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/size.
    */
-  inline nat size(const string& s) {
-    return s.size;
+  inline nat size(const string& string) {
+    return string.size;
   }
 
   /**
    * Implements dry:text/ascii/length.
    */
-  inline nat length(const string& s) {
-    return s.size;
+  inline nat length(const string& string) {
+    return string.size;
   }
 
   /**
    * Implements dry:text/ascii/nth.
    */
-  inline optional<char_> nth(const string& s,
-                             const nat n) {
-    if (n >= s.size) return none;
-    return s.data[n];
+  inline optional<char_> nth(const string& string,
+                             const nat index) {
+    if (index >= string.size) return none;
+    return string.data[index];
   }
 
   /**
    * Implements dry:text/ascii/equals?.
    */
-  inline bool equals(const string& s1,
-                     const string& s2) {
-    return s1.size == s2.size && ::std::strncmp(s1.data, s2.data, s1.size);
+  inline bool equals(const string& string1,
+                     const string& string2) {
+    return string1.size == string2.size && ::std::strncmp(string1.data, string2.data, string1.size);
   }
 
   /**
    * Implements dry:text/ascii/contains?.
    */
-  inline bool contains(const string& s,
-                       const char_ c) {
-    if (c > 0x7F) return false;
-    return ::std::any_of(s.data, s.data + s.size, [c](unsigned char c_) {
-      return c_ == c;
+  inline bool contains(const string& string,
+                       const char_ character) {
+    if (character > 0x7F) return false;
+    return ::std::any_of(string.data, string.data + string.size, [character](unsigned char c) {
+      return character == c;
     });
   }
 
   /**
    * Implements dry:text/ascii/ends-with?.
    */
-  inline bool ends_with(const string& s1,
-                        const string& s2) {
-    if (s2.size > s1.size) return false;
-    return ::std::strncmp(s1.data + s1.size - s2.size, s2.data, s2.size) == 0;
+  inline bool ends_with(const dry::string& string,
+                        const dry::string& suffix) {
+    if (suffix.size > string.size) return false;
+    return ::std::strncmp(string.data + string.size - suffix.size, suffix.data, suffix.size) == 0;
   }
 
   /**
    * Implements dry:text/ascii/starts-with?.
    */
-  inline bool starts_with(const string& s1,
-                          const string& s2) {
-    if (s2.size > s1.size) return false;
-    return ::std::strncmp(s1.data, s2.data, ::std::min(s1.size, s2.size)) == 0;
+  inline bool starts_with(const dry::string& string,
+                          const dry::string& prefix) {
+    if (prefix.size > string.size) return false;
+    return ::std::strncmp(string.data, prefix.data, ::std::min(string.size, prefix.size)) == 0;
   }
 
   /**
    * Implements dry:text/ascii/compare.
    */
-  inline int compare(const string& s1,
-                     const string& s2) {
-    return ::std::strncmp(s1.data, s2.data, ::std::min(s1.size, s2.size)); // FIXME
+  inline int compare(const string& string1,
+                     const string& string2) {
+    return ::std::strncmp(string1.data, string2.data, ::std::min(string1.size, string2.size)); // FIXME
   }
 
   /**
    * Implements dry:text/ascii/concat.
    */
-  inline const string concat(const string& s1,
-                             const string& s2) {
+  inline const string concat(const string& string1,
+                             const string& string2) {
     return {}; // TODO
   }
 
   /**
    * Implements dry:text/ascii/reverse.
    */
-  inline const string reverse(const string& s) {
+  inline const string reverse(const string& string) {
     return {}; // TODO
   }
 
   /**
    * Implements dry:text/ascii/trim.
    */
-  inline const string trim(const string& s) {
-    return s; // TODO
+  inline const string trim(const string& string) {
+    return string; // TODO
   }
 
   /**
    * Implements dry:text/ascii/trim-left.
    */
-  inline const string trim_left(const string& s) {
-    return s; // TODO
+  inline const string trim_left(const string& string) {
+    return string; // TODO
   }
 
   /**
    * Implements dry:text/ascii/trim-right.
    */
-  inline const string trim_right(const string& s) {
-    return s; // TODO
+  inline const string trim_right(const string& string) {
+    return string; // TODO
   }
 
 }}} // namespace dry::text::ascii
