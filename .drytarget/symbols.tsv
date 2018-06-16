@@ -1,85 +1,85 @@
-dry:base/any	typedef	dry::any
-dry:base/bit	typedef	dry::bit
-dry:base/bool	typedef	dry::bool_
-dry:base/char	typedef	dry::char_
-dry:base/complex	typedef	dry::complex
-dry:base/datum	-	-
-dry:base/error	typedef	dry::error
-dry:base/float	typedef	dry::float_
-dry:base/float32	typedef	dry::float32
-dry:base/float64	typedef	dry::float64
-dry:base/function	typedef	dry::function
-dry:base/int	typedef	dry::int_
-dry:base/int8	typedef	dry::int8
-dry:base/int16	typedef	dry::int16
-dry:base/int32	typedef	dry::int32
-dry:base/int64	typedef	dry::int64
-dry:base/int128	typedef	dry::int128
-dry:base/integer	struct	dry::integer
-dry:base/interval	struct	dry::interval
-dry:base/list	typedef	dry::list
-dry:base/map	typedef	dry::map
-dry:base/matrix	struct	dry::matrix
-dry:base/nat	typedef	dry::nat
-dry:base/natural	struct	dry::natural
-dry:base/none	typedef	dry::none_t
-dry:base/none	constexpr	dry::none
-dry:base/number	variant	dry::number
-dry:base/optional	typedef	dry::optional
-dry:base/predicate	typedef	dry::predicate
-dry:base/quantity	-	-
-dry:base/rational	struct	dry::rational
-dry:base/real	struct	dry::real
-dry:base/result	typedef	dry::result
-dry:base/scalar	variant	dry::scalar
-dry:base/seq	-	-
-dry:base/set	typedef	dry::set
-dry:base/string	struct	dry::string
-dry:base/symbol	struct	dry::symbol
-dry:base/tensor	variant	dry::tensor
-dry:base/tuple	typedef	dry::tuple
-dry:base/type	-	-
-dry:base/unit	-	-
-dry:base/vector	typedef	dry::vector
-dry:base/word	typedef	dry::word
-dry:base/word8	typedef	dry::word8
-dry:base/word16	typedef	dry::word16
-dry:base/word32	typedef	dry::word32
-dry:base/word64	typedef	dry::word64
-dry:text/ascii/blank?	function	dry::text::ascii::is_blank
-dry:text/ascii/compare	function	dry::text::ascii::compare
-dry:text/ascii/concat	function	dry::text::ascii::concat
-dry:text/ascii/contains?	function	dry::text::ascii::contains
-dry:text/ascii/empty?	function	dry::text::ascii::empty
-dry:text/ascii/ends-with?	function	dry::text::ascii::ends_with
-dry:text/ascii/equals?	function	dry::text::ascii::equals
-dry:text/ascii/length	function	dry::text::ascii::length
-dry:text/ascii/nth	function	dry::text::ascii::nth
-dry:text/ascii/reverse	function	dry::text::ascii::reverse
-dry:text/ascii/size	function	dry::text::ascii::size
-dry:text/ascii/starts-with?	function	dry::text::ascii::starts_with
-dry:text/ascii/string	typedef	dry::text::ascii::string
-dry:text/ascii/string	function	dry::text::ascii::make_string
-dry:text/ascii/trim	function	dry::text::ascii::trim
-dry:text/ascii/trim-left	function	dry::text::ascii::trim_left
-dry:text/ascii/trim-right	function	dry::text::ascii::trim_right
-dry:text/ascii/valid?	function	dry::text::ascii::is_valid
-dry:text/printf/sprintf	function	dry::text::printf::sprintf
-dry:text/utf8/blank?	function	dry::text::utf8::is_blank
-dry:text/utf8/compare	function	dry::text::utf8::compare
-dry:text/utf8/concat	function	dry::text::utf8::concat
-dry:text/utf8/contains?	function	dry::text::utf8::contains
-dry:text/utf8/empty?	function	dry::text::utf8::empty
-dry:text/utf8/ends-with?	function	dry::text::utf8::ends_with
-dry:text/utf8/equals?	function	dry::text::utf8::equals
-dry:text/utf8/length	function	dry::text::utf8::length
-dry:text/utf8/nth	function	dry::text::utf8::nth
-dry:text/utf8/reverse	function	dry::text::utf8::reverse
-dry:text/utf8/size	function	dry::text::utf8::size
-dry:text/utf8/starts-with?	function	dry::text::utf8::starts_with
-dry:text/utf8/string	typedef	dry::text::utf8::string
-dry:text/utf8/string	function	dry::text::utf8::make_string
-dry:text/utf8/trim	function	dry::text::utf8::trim
-dry:text/utf8/trim-left	function	dry::text::utf8::trim_left
-dry:text/utf8/trim-right	function	dry::text::utf8::trim_right
-dry:text/utf8/valid?	function	dry::text::utf8::is_valid
+dry:base/any	typedef	dry::any	drylib.hpp
+dry:base/bit	typedef	dry::bit	drylib.hpp
+dry:base/bool	typedef	dry::bool_	drylib.hpp
+dry:base/char	typedef	dry::char_	drylib.hpp
+dry:base/complex	typedef	dry::complex	drylib.hpp
+dry:base/datum	-	-	drylib.hpp
+dry:base/error	typedef	dry::error	drylib.hpp
+dry:base/float	typedef	dry::float_	drylib.hpp
+dry:base/float32	typedef	dry::float32	drylib.hpp
+dry:base/float64	typedef	dry::float64	drylib.hpp
+dry:base/function	typedef	dry::function	drylib.hpp
+dry:base/int	typedef	dry::int_	drylib.hpp
+dry:base/int8	typedef	dry::int8	drylib.hpp
+dry:base/int16	typedef	dry::int16	drylib.hpp
+dry:base/int32	typedef	dry::int32	drylib.hpp
+dry:base/int64	typedef	dry::int64	drylib.hpp
+dry:base/int128	typedef	dry::int128	drylib.hpp
+dry:base/integer	struct	dry::integer	drylib.hpp
+dry:base/interval	struct	dry::interval	drylib.hpp
+dry:base/list	typedef	dry::list	drylib.hpp
+dry:base/map	typedef	dry::map	drylib.hpp
+dry:base/matrix	struct	dry::matrix	drylib.hpp
+dry:base/nat	typedef	dry::nat	drylib.hpp
+dry:base/natural	struct	dry::natural	drylib.hpp
+dry:base/none	typedef	dry::none_t	drylib.hpp
+dry:base/none	constexpr	dry::none	drylib.hpp
+dry:base/number	variant	dry::number	drylib.hpp
+dry:base/optional	typedef	dry::optional	drylib.hpp
+dry:base/predicate	typedef	dry::predicate	drylib.hpp
+dry:base/quantity	-	-	drylib.hpp
+dry:base/rational	struct	dry::rational	drylib.hpp
+dry:base/real	struct	dry::real	drylib.hpp
+dry:base/result	typedef	dry::result	drylib.hpp
+dry:base/scalar	variant	dry::scalar	drylib.hpp
+dry:base/seq	-	-	drylib.hpp
+dry:base/set	typedef	dry::set	drylib.hpp
+dry:base/string	struct	dry::string	drylib.hpp
+dry:base/symbol	struct	dry::symbol	drylib.hpp
+dry:base/tensor	variant	dry::tensor	drylib.hpp
+dry:base/tuple	typedef	dry::tuple	drylib.hpp
+dry:base/type	-	-	drylib.hpp
+dry:base/unit	-	-	drylib.hpp
+dry:base/vector	typedef	dry::vector	drylib.hpp
+dry:base/word	typedef	dry::word	drylib.hpp
+dry:base/word8	typedef	dry::word8	drylib.hpp
+dry:base/word16	typedef	dry::word16	drylib.hpp
+dry:base/word32	typedef	dry::word32	drylib.hpp
+dry:base/word64	typedef	dry::word64	drylib.hpp
+dry:text/ascii/blank?	function	dry::text::ascii::is_blank	drylib.hpp
+dry:text/ascii/compare	function	dry::text::ascii::compare	drylib.hpp
+dry:text/ascii/concat	function	dry::text::ascii::concat	drylib.hpp
+dry:text/ascii/contains?	function	dry::text::ascii::contains	drylib.hpp
+dry:text/ascii/empty?	function	dry::text::ascii::empty	drylib.hpp
+dry:text/ascii/ends-with?	function	dry::text::ascii::ends_with	drylib.hpp
+dry:text/ascii/equals?	function	dry::text::ascii::equals	drylib.hpp
+dry:text/ascii/length	function	dry::text::ascii::length	drylib.hpp
+dry:text/ascii/nth	function	dry::text::ascii::nth	drylib.hpp
+dry:text/ascii/reverse	function	dry::text::ascii::reverse	drylib.hpp
+dry:text/ascii/size	function	dry::text::ascii::size	drylib.hpp
+dry:text/ascii/starts-with?	function	dry::text::ascii::starts_with	drylib.hpp
+dry:text/ascii/string	typedef	dry::text::ascii::string	drylib.hpp
+dry:text/ascii/string	function	dry::text::ascii::make_string	drylib.hpp
+dry:text/ascii/trim	function	dry::text::ascii::trim	drylib.hpp
+dry:text/ascii/trim-left	function	dry::text::ascii::trim_left	drylib.hpp
+dry:text/ascii/trim-right	function	dry::text::ascii::trim_right	drylib.hpp
+dry:text/ascii/valid?	function	dry::text::ascii::is_valid	drylib.hpp
+dry:text/printf/sprintf	function	dry::text::printf::sprintf	drylib.hpp
+dry:text/utf8/blank?	function	dry::text::utf8::is_blank	drylib.hpp
+dry:text/utf8/compare	function	dry::text::utf8::compare	drylib.hpp
+dry:text/utf8/concat	function	dry::text::utf8::concat	drylib.hpp
+dry:text/utf8/contains?	function	dry::text::utf8::contains	drylib.hpp
+dry:text/utf8/empty?	function	dry::text::utf8::empty	drylib.hpp
+dry:text/utf8/ends-with?	function	dry::text::utf8::ends_with	drylib.hpp
+dry:text/utf8/equals?	function	dry::text::utf8::equals	drylib.hpp
+dry:text/utf8/length	function	dry::text::utf8::length	drylib.hpp
+dry:text/utf8/nth	function	dry::text::utf8::nth	drylib.hpp
+dry:text/utf8/reverse	function	dry::text::utf8::reverse	drylib.hpp
+dry:text/utf8/size	function	dry::text::utf8::size	drylib.hpp
+dry:text/utf8/starts-with?	function	dry::text::utf8::starts_with	drylib.hpp
+dry:text/utf8/string	typedef	dry::text::utf8::string	drylib.hpp
+dry:text/utf8/string	function	dry::text::utf8::make_string	drylib.hpp
+dry:text/utf8/trim	function	dry::text::utf8::trim	drylib.hpp
+dry:text/utf8/trim-left	function	dry::text::utf8::trim_left	drylib.hpp
+dry:text/utf8/trim-right	function	dry::text::utf8::trim_right	drylib.hpp
+dry:text/utf8/valid?	function	dry::text::utf8::is_valid	drylib.hpp
