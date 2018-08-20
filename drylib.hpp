@@ -337,7 +337,7 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/string.
    */
-  inline const string make_string(const char* data) {
+  inline const string make_string(const char* const data) {
     return make_string(data, ::std::strlen(data));
   }
 
@@ -348,82 +348,6 @@ namespace dry { namespace text { namespace ascii {
     return ::std::all_of(string.data, string.data + string.size, [](unsigned char c) {
       return c == 0x20 || c == 0x09; // space or horizontal tab
     });
-  }
-
-  /**
-   * Implements dry:text/ascii/empty?.
-   */
-  inline bool empty(const string& string) {
-    return string.size == 0;
-  }
-
-  /**
-  * Implements dry:text/ascii/valid?.
-  */
-  inline bool is_valid(const string& string) {
-    return ::std::all_of(string.data, string.data + string.size, [](unsigned char c) {
-      return c <= 0x7F;
-    });
-  }
-
-  /**
-   * Implements dry:text/ascii/size.
-   */
-  inline nat size(const string& string) {
-    return string.size;
-  }
-
-  /**
-   * Implements dry:text/ascii/length.
-   */
-  inline nat length(const string& string) {
-    return string.size;
-  }
-
-  /**
-   * Implements dry:text/ascii/nth.
-   */
-  inline optional<char_> nth(const string& string,
-                             const nat index) {
-    if (index >= string.size) return none;
-    return string.data[index];
-  }
-
-  /**
-   * Implements dry:text/ascii/equals?.
-   */
-  inline bool equals(const string& string1,
-                     const string& string2) {
-    return string1.size == string2.size && ::std::strncmp(string1.data, string2.data, string1.size);
-  }
-
-  /**
-   * Implements dry:text/ascii/contains?.
-   */
-  inline bool contains(const string& string,
-                       const char_ character) {
-    if (character > 0x7F) return false;
-    return ::std::any_of(string.data, string.data + string.size, [character](unsigned char c) {
-      return character == c;
-    });
-  }
-
-  /**
-   * Implements dry:text/ascii/ends-with?.
-   */
-  inline bool ends_with(const dry::string& string,
-                        const dry::string& suffix) {
-    if (suffix.size > string.size) return false;
-    return ::std::strncmp(string.data + string.size - suffix.size, suffix.data, suffix.size) == 0;
-  }
-
-  /**
-   * Implements dry:text/ascii/starts-with?.
-   */
-  inline bool starts_with(const dry::string& string,
-                          const dry::string& prefix) {
-    if (prefix.size > string.size) return false;
-    return ::std::strncmp(string.data, prefix.data, ::std::min(string.size, prefix.size)) == 0;
   }
 
   /**
@@ -443,10 +367,77 @@ namespace dry { namespace text { namespace ascii {
   }
 
   /**
+   * Implements dry:text/ascii/contains?.
+   */
+  inline bool contains(const string& string,
+                       const char_ character) {
+    if (character > 0x7F) return false;
+    return ::std::any_of(string.data, string.data + string.size, [character](unsigned char c) {
+      return character == c;
+    });
+  }
+
+  /**
+   * Implements dry:text/ascii/empty?.
+   */
+  inline bool empty(const string& string) {
+    return string.size == 0;
+  }
+
+  /**
+   * Implements dry:text/ascii/ends-with?.
+   */
+  inline bool ends_with(const dry::string& string,
+                        const dry::string& suffix) {
+    if (suffix.size > string.size) return false;
+    return ::std::strncmp(string.data + string.size - suffix.size, suffix.data, suffix.size) == 0;
+  }
+
+  /**
+   * Implements dry:text/ascii/equals?.
+   */
+  inline bool equals(const string& string1,
+                     const string& string2) {
+    return string1.size == string2.size && ::std::strncmp(string1.data, string2.data, string1.size);
+  }
+
+  /**
+   * Implements dry:text/ascii/length.
+   */
+  inline nat length(const string& string) {
+    return string.size;
+  }
+
+  /**
+   * Implements dry:text/ascii/nth.
+   */
+  inline optional<char_> nth(const string& string,
+                             const nat index) {
+    if (index >= string.size) return none;
+    return string.data[index];
+  }
+
+  /**
    * Implements dry:text/ascii/reverse.
    */
   inline const string reverse(const string& string) {
     return {}; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/size.
+   */
+  inline nat size(const string& string) {
+    return string.size;
+  }
+
+  /**
+   * Implements dry:text/ascii/starts-with?.
+   */
+  inline bool starts_with(const dry::string& string,
+                          const dry::string& prefix) {
+    if (prefix.size > string.size) return false;
+    return ::std::strncmp(string.data, prefix.data, ::std::min(string.size, prefix.size)) == 0;
   }
 
   /**
@@ -468,6 +459,15 @@ namespace dry { namespace text { namespace ascii {
    */
   inline const string trim_right(const string& string) {
     return string; // TODO
+  }
+
+  /**
+  * Implements dry:text/ascii/valid?.
+  */
+  inline bool is_valid(const string& string) {
+    return ::std::all_of(string.data, string.data + string.size, [](unsigned char c) {
+      return c <= 0x7F;
+    });
   }
 
 }}} // namespace dry::text::ascii
