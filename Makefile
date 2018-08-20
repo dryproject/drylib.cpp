@@ -1,15 +1,21 @@
-CXX     ?= c++
-PANDOC  ?= pandoc
+AR       ?= ar
+CXX      ?= c++
+CPPFLAGS ?=
+CPPFLAGS += -I src
+CPPFLAGS += -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
+CXXFLAGS ?=
+CXXFLAGS += -std=c++17
+RANLIB   ?= ranlib
 
-CPPFLAGS = -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
-CXXFLAGS = -std=c++17
+PANDOC   ?= pandoc
 
-PACKAGE :=
-VERSION := $(shell cat VERSION)
+PACKAGE  := drylib-cpp
+VERSION  := $(shell cat VERSION)
 
-SOURCES :=
+SOURCES  :=
 
-TARGETS := test
+TARGETS  := test
+OBJECTS  :=
 
 %.html: %.rst
 	$(PANDOC) -o $@ -t html5 -s $<
@@ -45,6 +51,6 @@ distclean: clean
 
 mostlyclean: clean
 
-.PHONY: check dist install clean distclean mostlyclean
+.PHONY: check dist install uninstall clean distclean mostlyclean
 .SECONDARY:
 .SUFFIXES:
