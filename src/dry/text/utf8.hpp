@@ -12,6 +12,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
+#include "../base.hpp"
+#include "ascii.hpp"
+
 #include <algorithm>    /* for std::max(), std::min(), ... */
 #include <any>          /* for std::any */
 #include <cassert>      /* for assert() */
