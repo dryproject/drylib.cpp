@@ -46,6 +46,13 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/string.
    */
+  inline const string make_string(const char_ character) {
+    return {}; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/string.
+   */
   inline const string make_string(const char* data,
                                   const nat size) {
     return {size, data};
@@ -61,10 +68,25 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/blank?.
    */
+  inline bool is_blank(const char_ character) {
+    return character == 0x20 || character == 0x09; // space or horizontal tab
+  }
+
+  /**
+   * Implements dry:text/ascii/blank?.
+   */
   inline bool is_blank(const string& string) {
     return ::std::all_of(string.data, string.data + string.size, [](unsigned char c) {
       return c == 0x20 || c == 0x09; // space or horizontal tab
     });
+  }
+
+  /**
+   * Implements dry:text/ascii/compare.
+   */
+  inline int compare(const char_ character1,
+                     const char_ character2) {
+    return -1; // TODO
   }
 
   /**
@@ -95,6 +117,22 @@ namespace dry { namespace text { namespace ascii {
   }
 
   /**
+   * Implements dry:text/ascii/contains?.
+   */
+  inline bool contains(const string& string,
+                       const dry::string& substring) {
+    return false; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/contains?.
+   */
+  inline bool contains(const string& string,
+                       const char* const substring) {
+    return false; // TODO
+  }
+
+  /**
    * Implements dry:text/ascii/empty?.
    */
   inline bool empty(const string& string) {
@@ -104,10 +142,28 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/ends-with?.
    */
-  inline bool ends_with(const dry::string& string,
+  inline bool ends_with(const string& string,
+                        const char_ suffix) {
+    return false; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/ends-with?.
+   */
+  inline bool ends_with(const string& string,
                         const dry::string& suffix) {
     if (suffix.size > string.size) return false;
     return ::std::strncmp(string.data + string.size - suffix.size, suffix.data, suffix.size) == 0;
+  }
+
+  /**
+   * Implements dry:text/ascii/ends-with?.
+   */
+  inline bool ends_with(const string& string,
+                        const char* const suffix) {
+    const auto suffix_size = std::strlen(suffix);
+    if (suffix_size > string.size) return false;
+    return ::std::strncmp(string.data + string.size - suffix_size, suffix, suffix_size) == 0;
   }
 
   /**
@@ -151,10 +207,28 @@ namespace dry { namespace text { namespace ascii {
   /**
    * Implements dry:text/ascii/starts-with?.
    */
-  inline bool starts_with(const dry::string& string,
+  inline bool starts_with(const string& string,
+                          const char_ prefix) {
+    return false; // TODO
+  }
+
+  /**
+   * Implements dry:text/ascii/starts-with?.
+   */
+  inline bool starts_with(const string& string,
                           const dry::string& prefix) {
     if (prefix.size > string.size) return false;
     return ::std::strncmp(string.data, prefix.data, ::std::min(string.size, prefix.size)) == 0;
+  }
+
+  /**
+   * Implements dry:text/ascii/starts-with?.
+   */
+  inline bool starts_with(const string& string,
+                          const char* const prefix) {
+    const auto prefix_size = std::strlen(prefix);
+    if (prefix_size > string.size) return false;
+    return ::std::strncmp(string.data, prefix, ::std::min(string.size, prefix_size)) == 0;
   }
 
   /**
@@ -176,6 +250,13 @@ namespace dry { namespace text { namespace ascii {
    */
   inline const string trim_right(const string& string) {
     return string; // TODO
+  }
+
+  /**
+  * Implements dry:text/ascii/valid?.
+  */
+  inline bool is_valid(const char_ character) {
+    return character <= 0x7F;
   }
 
   /**
