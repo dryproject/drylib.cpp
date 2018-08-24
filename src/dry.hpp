@@ -13,28 +13,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "dry/base.hpp"
-#include "dry/text/ascii.hpp"
-#include "dry/text/printf.hpp"
-#include "dry/text/utf8.hpp"
-
-////////////////////////////////////////////////////////////////////////////////
-
-namespace dry { namespace bits { }}   // namespace dry::bits
-namespace dry { namespace code { }}   // namespace dry::code
-namespace dry { namespace crypto { }} // namespace dry::crypto
-namespace dry { namespace data { }}   // namespace dry::data
-namespace dry { namespace ffi { }}    // namespace dry::ffi
-namespace dry { namespace geo { }}    // namespace dry::geo
-namespace dry { namespace io { }}     // namespace dry::io
-namespace dry { namespace lang { }}   // namespace dry::lang
-namespace dry { namespace logic { }}  // namespace dry::logic
-namespace dry { namespace math { }}   // namespace dry::math
-namespace dry { namespace media { }}  // namespace dry::media
-namespace dry { namespace meta { }}   // namespace dry::meta
-namespace dry { namespace net { }}    // namespace dry::net
-namespace dry { namespace qty { }}    // namespace dry::qty
-namespace dry { namespace std { }}    // namespace dry::std
-namespace dry { namespace sys { }}    // namespace dry::sys
-namespace dry { namespace text { }}   // namespace dry::text
-namespace dry { namespace time { }}   // namespace dry::time
-namespace dry { namespace util { }}   // namespace dry::util
+#include "dry/bits.hpp"
+#include "dry/code.hpp"
+#include "dry/crypto.hpp"
+#include "dry/data.hpp"
+#include "dry/ffi.hpp"
+#include "dry/geo.hpp"
+#include "dry/io.hpp"
+#include "dry/lang.hpp"
+#include "dry/logic.hpp"
+#include "dry/math.hpp"
+#include "dry/media.hpp"
+#include "dry/meta.hpp"
+#include "dry/net.hpp"
+#include "dry/qty.hpp"
+#include "dry/std.hpp"
+#include "dry/sys.hpp"
+#include "dry/text.hpp"
+#include "dry/time.hpp"
+#include "dry/util.hpp"
