@@ -107,7 +107,7 @@ namespace dry {
   struct real;
 
   template<typename T>
-  using result = std::pair<error, T>;
+  using result = ::std::pair<error, T>;
 
   // see further below for dry::scalar
 

@@ -9,11 +9,18 @@ using namespace dry::text;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-int main(int argc, char* argv[]) {
+static void
+test_text_ascii(void) {
   const auto s = ascii::make_string("hello");
   ascii::length(s);
 
   printf::sprintf("Hello, %s!", "world");
+}
 
-  return EXIT_SUCCESS; // TODO
+////////////////////////////////////////////////////////////////////////////////
+
+int
+main(int argc, char* argv[]) {
+  test_text_ascii();
+  return EXIT_SUCCESS;
 }

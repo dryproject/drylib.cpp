@@ -161,7 +161,7 @@ namespace dry { namespace text { namespace ascii {
    */
   inline bool ends_with(const string& string,
                         const char* const suffix) {
-    const auto suffix_size = std::strlen(suffix);
+    const auto suffix_size = ::std::strlen(suffix);
     if (suffix_size > string.size) return false;
     return ::std::strncmp(string.data + string.size - suffix_size, suffix, suffix_size) == 0;
   }
@@ -226,7 +226,7 @@ namespace dry { namespace text { namespace ascii {
    */
   inline bool starts_with(const string& string,
                           const char* const prefix) {
-    const auto prefix_size = std::strlen(prefix);
+    const auto prefix_size = ::std::strlen(prefix);
     if (prefix_size > string.size) return false;
     return ::std::strncmp(string.data, prefix, ::std::min(string.size, prefix_size)) == 0;
   }
