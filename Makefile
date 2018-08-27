@@ -1,26 +1,33 @@
-AR       ?= ar
+PACKAGE  := drylib-cpp
+VERSION  := $(shell cat VERSION)
+
 CXX      ?= c++
 CPPFLAGS ?=
 CPPFLAGS += -I src
 CPPFLAGS += -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
 CXXFLAGS ?=
 CXXFLAGS += -std=c++17
-RANLIB   ?= ranlib
 
 PANDOC   ?= pandoc
 
-PACKAGE  := drylib-cpp
-VERSION  := $(shell cat VERSION)
+INSTALL  ?= install
+INSTALL_PROGRAM = $(INSTALL)
+INSTALL_DATA    = $(INSTALL) -m 644
 
-SOURCES  :=
+prefix     ?= /usr/local
+exec_prefix = $(prefix)
+includedir  = $(prefix)/include
+libdir      = $(exec_prefix)/lib
 
-TARGETS  := test
+HEADERS  := $(wildcard src/*.hpp src/*/*.hpp src/*/*/*.hpp)
+SOURCES  := $(HEADERS)
 OBJECTS  :=
+TARGETS  :=
 
 %.html: %.rst
 	$(PANDOC) -o $@ -t html5 -s $<
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -o $@ -c $<
 
 %: %.o
@@ -28,9 +35,7 @@ OBJECTS  :=
 
 test: test.o
 
-all: build
-
-build: $(TARGETS)
+all: check
 
 check: test
 	./test
@@ -38,19 +43,26 @@ check: test
 dist:
 	@echo "not implemented"; exit 2 # TODO
 
-install:
-	@echo "not implemented"; exit 2 # TODO
+installdirs:
+	$(INSTALL) -d $(DESTDIR)$(includedir)
+	$(INSTALL) -d $(DESTDIR)$(includedir)/dry
+	$(INSTALL) -d $(DESTDIR)$(includedir)/dry/base
+	$(INSTALL) -d $(DESTDIR)$(includedir)/dry/meta
+	$(INSTALL) -d $(DESTDIR)$(includedir)/dry/text
+
+install: installdirs $(TARGETS) $(HEADERS)
+	$(foreach file,$(HEADERS),$(INSTALL_DATA) $(file) $(DESTDIR)$(includedir)/$(file:src/%=%);)
 
 uninstall:
 	@echo "not implemented"; exit 2 # TODO
 
 clean:
-	@rm -f *~ *.o $(TARGETS)
+	@rm -f *~ *.o $(TARGETS) $(OBJECTS)
 
 distclean: clean
 
 mostlyclean: clean
 
-.PHONY: check dist install uninstall clean distclean mostlyclean
+.PHONY: check dist installdirs install install-strip clean distclean mostlyclean
 .SECONDARY:
 .SUFFIXES:
