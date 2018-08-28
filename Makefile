@@ -2,9 +2,8 @@ PACKAGE  := drylib-cpp
 VERSION  := $(shell cat VERSION)
 
 CXX      ?= c++
-CPPFLAGS ?=
+CPPFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
 CPPFLAGS += -I src
-CPPFLAGS += -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
 CXXFLAGS ?=
 CXXFLAGS += -std=c++17
 
