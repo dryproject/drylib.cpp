@@ -8,7 +8,11 @@
 *.html
 
 # Object files
+*.a
 *.o
+
+# pkg-config files
+*.pc
 
 # Test runner binary
 test
