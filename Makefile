@@ -63,7 +63,7 @@ uninstall:
 	@echo "not implemented"; exit 2 # TODO
 
 clean:
-	@rm -f *~ *.o $(TARGETS) $(OBJECTS)
+	@rm -f test *~ *.o $(TARGETS) $(OBJECTS)
 
 distclean: clean
 

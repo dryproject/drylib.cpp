@@ -12,18 +12,26 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
+#include "complex.hpp"
+#include "float.hpp"
 #include "integer.hpp"
+#include "natural.hpp"
+#include "rational.hpp"
+#include "real.hpp"
+
+#include <variant> /* for std::variant */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
-  using nat = unsigned long;
-
-  struct natural;
+  using number = ::std::variant<
+    complex,
+    float,
+    int,
+    integer,
+    nat,
+    natural,
+    rational,
+    real
+  >;
 }
-
-////////////////////////////////////////////////////////////////////////////////
-
-struct dry::natural {
-  dry::int128 value; // FIXME
-};

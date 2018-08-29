@@ -12,18 +12,19 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "integer.hpp"
+#include "matrix.h"
+#include "scalar.h"
+#include "vector.h"
+
+#include <variant> /* for std::variant */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
-  using nat = unsigned long;
-
-  struct natural;
+  template<typename T>
+  using tensor = ::std::variant<
+    scalar,
+    vector<T>,
+    matrix<T>
+  >;
 }
-
-////////////////////////////////////////////////////////////////////////////////
-
-struct dry::natural {
-  dry::int128 value; // FIXME
-};

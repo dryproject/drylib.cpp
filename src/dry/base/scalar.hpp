@@ -12,18 +12,21 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "integer.hpp"
+#include "bool.h"
+#include "char.h"
+#include "number.h"
+#include "word.h"
+
+#include <variant> /* for std::variant */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
-  using nat = unsigned long;
-
-  struct natural;
+  using scalar = ::std::variant<
+    //bit, // TODO
+    bool_,
+    char_,
+    number,
+    word
+  >;
 }
-
-////////////////////////////////////////////////////////////////////////////////
-
-struct dry::natural {
-  dry::int128 value; // FIXME
-};

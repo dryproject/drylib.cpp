@@ -12,18 +12,15 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "integer.hpp"
+#include <memory> /* for std::allocator */
+#include <vector> /* for std::vector */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
-  using nat = unsigned long;
-
-  struct natural;
+  template<
+    typename T,
+    typename Allocator = ::std::allocator<T>
+  >
+  using vector = ::std::vector<T, Allocator>;
 }
-
-////////////////////////////////////////////////////////////////////////////////
-
-struct dry::natural {
-  dry::int128 value; // FIXME
-};

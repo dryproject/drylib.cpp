@@ -12,18 +12,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "integer.hpp"
+#include <forward_list> /* for std::forward_list */
+#include <memory>       /* for std::allocator */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
-  using nat = unsigned long;
-
-  struct natural;
+  template<typename T, typename Allocator = ::std::allocator<T>>
+  using list = ::std::forward_list<T, Allocator>;
 }
-
-////////////////////////////////////////////////////////////////////////////////
-
-struct dry::natural {
-  dry::int128 value; // FIXME
-};

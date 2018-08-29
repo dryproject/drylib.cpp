@@ -12,18 +12,13 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "integer.hpp"
+#include <functional> /* for std::less */
+#include <memory>     /* for std::allocator */
+#include <set>        /* for std::set */
 
 ////////////////////////////////////////////////////////////////////////////////
 
 namespace dry {
-  using nat = unsigned long;
-
-  struct natural;
+  template<typename Key, typename Compare = ::std::less<Key>, typename Allocator = ::std::allocator<Key>>
+  using set = ::std::set<Key, Compare, Allocator>;
 }
-
-////////////////////////////////////////////////////////////////////////////////
-
-struct dry::natural {
-  dry::int128 value; // FIXME
-};

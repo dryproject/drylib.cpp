@@ -15,7 +15,13 @@
 namespace dry {
   using float_ = double;
 
+  using float16 = float; // TODO: _Float16
+
   using float32 = float;
 
   using float64 = double;
+
+#ifdef __FLOAT128__
+  using float128 = __float128;
+#endif
 }

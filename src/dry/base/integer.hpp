@@ -30,7 +30,7 @@ namespace dry {
 #ifdef __SIZEOF_INT128__
   using int128 = __int128;
 #else
-#error "DRYlib for C++ requires compiler support for the __int128 type"
+#error "DRYlib for C++ requires compiler support for the __int128 type" // FIXME
 #endif
 
   struct integer;
@@ -39,5 +39,5 @@ namespace dry {
 ////////////////////////////////////////////////////////////////////////////////
 
 struct dry::integer {
-  dry::int128 value; // TODO
+  dry::int128 value; // FIXME
 };

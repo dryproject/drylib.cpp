@@ -18,7 +18,7 @@
 #include "../base/string.hpp"
 
 #include <cassert>   /* for assert() */
-#include <algorithm> /* for std::max(), std::min(), ... */
+#include <algorithm> /* for std::any_of(), std::max(), std::min(), ... */
 #include <cstring>   /* for std::strlen(), std::strncmp() */
 
 ////////////////////////////////////////////////////////////////////////////////
