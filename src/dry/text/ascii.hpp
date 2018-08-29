@@ -12,26 +12,14 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "../base.hpp"
+#include "../base/char.hpp"
+#include "../base/natural.hpp"
+#include "../base/optional.hpp"
+#include "../base/string.hpp"
 
-#include <algorithm>    /* for std::max(), std::min(), ... */
-#include <any>          /* for std::any */
-#include <cassert>      /* for assert() */
-#include <cstdarg>      /* for std::vsnprintf(), va_* */
-#include <cstdint>      /* for __WORDSIZE, std::*int_t */
-#include <cstring>      /* for std::strlen(), std::strncmp() */
-#include <exception>    /* for std::exception */
-#include <forward_list> /* for std::forward_list */
-#include <functional>   /* for std::function */
-#include <map>          /* for std::map */
-#include <memory>       /* for std::allocator, std::unique_ptr */
-#include <optional>     /* for std::optional */
-#include <set>          /* for std::set */
-#include <string>       /* for std::string */
-#include <tuple>        /* for std::tuple */
-#include <utility>      /* for std::pair */
-#include <variant>      /* for std::variant */
-#include <vector>       /* for std::vector */
+#include <cassert>   /* for assert() */
+#include <algorithm> /* for std::max(), std::min(), ... */
+#include <cstring>   /* for std::strlen(), std::strncmp() */
 
 ////////////////////////////////////////////////////////////////////////////////
 /* dry:text/ascii */
