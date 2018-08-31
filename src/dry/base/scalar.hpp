@@ -12,10 +12,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "bool.h"
-#include "char.h"
-#include "number.h"
-#include "word.h"
+#include "bool.hpp"
+#include "char.hpp"
+#include "number.hpp"
+#include "word.hpp"
 
 #include <variant> /* for std::variant */
 

@@ -12,9 +12,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "matrix.h"
-#include "scalar.h"
-#include "vector.h"
+#include "matrix.hpp"
+#include "scalar.hpp"
+#include "vector.hpp"
 
 #include <variant> /* for std::variant */
 
