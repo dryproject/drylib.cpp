@@ -1,4 +1,4 @@
-# https://docs.travis-ci.com/user/languages/cpp/
+# See: https://docs.travis-ci.com/user/languages/cpp/
 language: cpp
 sudo: false
 matrix:
@@ -9,9 +9,9 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-7
+            - g++-8
       env:
-        - ENV="g++-7 -std=c++14"
+        - ENV="g++-8 -std=c++17"
     - os: linux
       addons:
         apt:
@@ -20,7 +20,7 @@ matrix:
           packages:
             - clang-5.0
       env:
-        - ENV="clang++-5.0 -std=c++14"
+        - ENV="clang++-5.0 -std=c++17"
 before_install:
   - export CXX="$ENV"
 script:
