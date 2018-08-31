@@ -2,15 +2,15 @@ PACKAGE  := drylib-cpp
 VERSION  := $(shell cat VERSION)
 
 CXX      ?= c++
-CPPFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
-CPPFLAGS += -I src
-CXXFLAGS ?=
-CXXFLAGS += -std=c++17
+INSTALL  ?= install
+PANDOC   ?= pandoc
 SED      ?= sed
 
-PANDOC   ?= pandoc
+CXXFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
+CXXFLAGS += -std=c++17
+CPPFLAGS ?=
+CPPFLAGS += -I src
 
-INSTALL  ?= install
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA    = $(INSTALL) -m 644
 

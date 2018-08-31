@@ -1,4 +1,5 @@
 CXX      ?= c++
+
 CXXFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function
 CXXFLAGS += -std=c++17
 CXXFLAGS += $(shell pkg-config --cflags-only-other drylib-cpp)
@@ -22,7 +23,7 @@ TARGETS  := hello
 
 hello: $(OBJECTS)
 
-all: hello
+all: $(TARGETS)
 
 clean:
 	@rm -f *~ $(TARGETS) $(OBJECTS)

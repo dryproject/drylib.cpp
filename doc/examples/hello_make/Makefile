@@ -1,7 +1,8 @@
 CXX      ?= c++
-CPPFLAGS ?=
+
 CXXFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function
 CXXFLAGS += -std=c++17
+CPPFLAGS ?=
 
 SOURCES  := hello.cpp
 OBJECTS  := hello.o
