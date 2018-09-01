@@ -33,12 +33,12 @@ TARGETS  :=
 %: %.o
 	$(CXX) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
+all:
+
 drylib-cpp.pc: etc/pkgconfig/drylib-cpp.pc.in
 	$(SED) -e 's:@prefix@:$(prefix):g' -e 's:@version@:$(VERSION):g' $^ > $@
 
 test: test.o
-
-all: check
 
 check: test
 	./test
@@ -60,7 +60,12 @@ install: installdirs drylib-cpp.pc $(TARGETS) $(HEADERS)
 	$(foreach file,$(HEADERS),$(INSTALL_DATA) $(file) $(DESTDIR)$(includedir)/$(file:src/%=%);)
 
 uninstall:
-	@echo "not implemented"; exit 2 # TODO
+	rm -f $(DESTDIR)$(libdir)/pkgconfig/drylib-cpp.pc
+	$(foreach file,$(HEADERS),rm -f $(DESTDIR)$(includedir)/$(file:src/%=%);)
+	rmdir $(DESTDIR)$(includedir)/dry/base || true
+	rmdir $(DESTDIR)$(includedir)/dry/meta || true
+	rmdir $(DESTDIR)$(includedir)/dry/text || true
+	rmdir $(DESTDIR)$(includedir)/dry || true
 
 clean:
 	@rm -f test *~ *.o $(TARGETS) $(OBJECTS)
